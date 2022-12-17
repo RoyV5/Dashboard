@@ -19,13 +19,17 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: minmax(200px, 1fr) 5fr;
-    grid-template-rows: 160px 1fr 1fr;
+    grid-template-columns: minmax(250px, 1fr) 5fr;
+    grid-template-rows: auto 1fr 1fr;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* SIDEBAR RELATED */
 .sidebar {
-    background-color: #143B8F;
+    background-color: #0e2d6e;
     grid-column: 1 / 2;
     grid-row: 1/-1;
     display: flex;
@@ -43,13 +47,15 @@ body {
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items:center;
-    margin: 10px;
-    margin-left: 15px;
-    gap: 10px;
+    padding: 0;
+    margin: 5px;
+    margin-left: 30px;
+    gap: 5px;
 }
 
-.sidebar > h2 {
+.sidebar h3 {
     text-align: center;
+    font-size: 1.7em;
 }
 
 .sidebar img {
@@ -57,8 +63,43 @@ body {
     width: 30px;
 }
 
+.sidebar hr {
+    width: 70%;
+    border-bottom: 0;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar ul {
+    margin-top: 10px;
+}
+
 .sidebar li {
     padding: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.sidebar li img {
+    height: 22px;
+    width: 22px;
+    padding-right: 15px;
+    color: white;
+}
+
+.sidebar li * {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: white;
+    will-change: transform;
+    transition: transform 200ms;
+    padding-bottom: 15px;
+}
+
+.sidebar li a:hover,
+.sidebar li a:active {
+    transform: translateY(-2px);
 }
  
 /* HEADER RELATED */
@@ -70,6 +111,7 @@ header {
     flex-flow: column;
     box-shadow: 0px 2px 1px 1px rgb(0, 0, 0, 0.3);
     margin-bottom: 2px;
+    height: min-content;
 }
 
 .searchbar {
@@ -99,7 +141,7 @@ header {
     border-radius: 50%;
     height: 35px;
     width: 35px;
-    margin-right: max(10px, 2%);
+    margin-right: max(10px, 1%);
     border: black solid 1.8px;
 }
 
@@ -111,6 +153,14 @@ header {
     width: max(450px, 60%);
     padding: 5px 0px 5px 0px;
     margin-right: 10px;
+    will-change: border;
+    transition: border 250ms;
+}
+
+.searchbar input:hover, 
+.searchbar input:active,
+.searchbar input:focus {
+    border: #194AB3 solid 2px;
 }
 
 .searchbar p {
@@ -118,6 +168,13 @@ header {
     font-weight: bold;
     letter-spacing: 0.1px;
     white-space: nowrap;
+    will-change: color;
+    transition: color 150ms;
+}
+
+.searchbar p:hover {
+    color:#D0121F;
+    cursor: pointer;
 }
 
 
@@ -157,10 +214,19 @@ header {
 }
 
 .profile h4 {
+    will-change: color;
+    transition: color 150ms;
     font-size: 1.2em;
     padding: 0px;
     margin: 0px;
+
 }
+
+.profile h4:hover {
+    color:#D0121F;
+    cursor: pointer;
+}
+
 
 .profile ul {
     width: 50%;
@@ -198,49 +264,64 @@ header {
     background-color: rgb(227, 231, 233);
     display: grid;
     grid-template-columns: 4fr 4fr 3fr;
+    grid-template-rows: 1fr 1fr;
     gap: 5px;
 }
 
+.main-content h4 {
+    font-size: 1.2em;
+}
+
 .project-grid {
-    gap: 15px;
+    gap: 30px;
     display: grid;
     grid-column: 1 / 3;
     grid-row: 1 / 3;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: 1fr;
-    grid-auto-rows: 3fr;
+    grid-template-rows: 40px;
+    grid-auto-rows: 200px;
     margin-right: 15px;
+    align-items: stretch;
 }
 
 .project-grid > h4 {
-    align-self: end;
     margin-left: 5px;
     grid-column: 1 / -1;
     margin-bottom: 0;
     height: min-content;
+    align-self: start;
+    margin-top: 25px;
 }
 
 .project-grid > div {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: start;
     align-items: start;
     background-color: white;
-    border-left: #FFB703 solid 6px;
-    height: 180px;
+    border-left: #D0121F solid 6px;
+    height: 190px;
     border-radius: 10px;
     padding: 5px 15px 5px 15px;
+    justify-content: flex-start;
+    box-shadow: 1px 2px 1px 1px rgb(0, 0, 0, 0.3);
+    will-change: transform;
+    transition: transform 250ms;
+}
+
+.project-grid > div:hover,
+.project-grid > div:focus {
+    transform: translateY(-5px)
 }
 
 .project-grid img {
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
 }
 
 .project-grid h5 {
     margin: 2px;
     margin-top: 20px;
-    font-size: 0.9em;
+    font-size: 1em;
     letter-spacing: 1px;
 }
 
@@ -250,14 +331,159 @@ header {
     color: #676869; 
 }
 
+.project-card ul {
+    display: flex;
+    flex-flow: row nowrap;
+    align-self: end;
+    margin-top: auto;
+}
+
+.project-card li {
+    display: inline;
+    padding: 5px 10px 5px 10px;
+}
+
 
 .announcements {
+    background-color: transparent;
+    display: flex;
+    flex-flow: column nowrap;
     align-self: baseline;
     grid-column: 3 / 4;
     grid-row: 1 / 2;
+    will-change: transform;
+    transition: transform 250ms;
+}
+
+.announcements:hover {
+    transform: translateY(-2px);
+}
+
+.announcements h4 {
+    margin: 0;
+    padding: 0;
+    height: min-content;
+    align-self: start;
+    margin-top: 30px;
+}
+
+.announcements .announcements-window {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 1px 2px 1px 1px rgb(0, 0, 0, 0.3);
+    margin-right: 30px;
+    margin-top: 13px;
+}
+
+.announcements-window hr {
+    width: 100%;
+    border: #c0c2c4 solid 1px;
+    border-bottom: 0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.announcements .announcements-window h5 {
+    color: black;
+    background-color: inherit;
+    margin: 0;
+    padding: 2px;
+    letter-spacing: 1.2px;
+}
+
+.announcements .announcements-window p {
+    color: #676869;
+    font-size: 0.8em;
+    margin: 0;
+    padding: 2px;
 }
 
 .trending {
+    display: flex;
+    flex-flow: column nowrap;
+    align-self: baseline;
     grid-column: 3 / 4;
     grid-row: 2 / 3;
+    will-change: transform;
+    transition: transform 250ms;
+}
+
+.trending:hover {
+    transform: translateY(-2px);
+}
+.trending h4 {
+    margin: 0;
+    margin-top: 15px;
+    padding: 0;
+    height: min-content;
+    align-self: start;
+}
+
+.trending .trending-window {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: white;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    border-radius: 10px;
+    box-shadow: 1px 2px 1px 1px rgb(0, 0, 0, 0.3);
+    margin-right: 30px;
+    margin-top: 17px;
+}
+
+.trending-window hr {
+    width: 100%;
+    border: #c0c2c4 solid 1px;
+    border-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.trending .trending-window h5 {
+    color: black;
+    background-color: inherit;
+    font-weight: 500;
+    margin: 0;
+    padding: 2px;
+}
+
+.trending .trending-window p {
+    color: #676869;
+    font-size: 0.8em;
+    margin: 0;
+    padding: 2px;
+}
+
+.trending-profile {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.trending-profile:hover {
+    background-color:rgb(227, 231, 233);
+}
+
+.trending-profile img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    border: black solid 1px;
+}
+
+.trending-profile code {
+    font-family: monospace;
+    font-size: 12px;
 }
