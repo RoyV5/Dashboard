@@ -151,7 +151,8 @@ header {
     background-color: #eaebec;
     align-self: center;
     width: max(450px, 60%);
-    padding: 5px 0px 5px 0px;
+    padding: 5px 5px 5px 15px;
+    font-family: 'Open Sans', sans-serif;
     margin-right: 10px;
     will-change: border;
     transition: border 250ms;
@@ -161,6 +162,7 @@ header {
 .searchbar input:active,
 .searchbar input:focus {
     border: #194AB3 solid 2px;
+    outline: none;
 }
 
 .searchbar p {
@@ -169,12 +171,16 @@ header {
     letter-spacing: 0.1px;
     white-space: nowrap;
     will-change: color;
-    transition: color 150ms;
+    transition: color 100ms;
 }
 
 .searchbar p:hover {
     color:#D0121F;
     cursor: pointer;
+}
+
+.searchbar p:active {
+    color: #FECB00;
 }
 
 
@@ -225,6 +231,10 @@ header {
 .profile h4:hover {
     color:#D0121F;
     cursor: pointer;
+}
+
+.profile h4:active {
+    color: #FECB00;
 }
 
 
@@ -486,4 +496,6 @@ header {
 .trending-profile code {
     font-family: monospace;
     font-size: 12px;
+    letter-spacing: 1px;
 }
+
